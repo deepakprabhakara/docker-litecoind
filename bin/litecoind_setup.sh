@@ -26,6 +26,8 @@ if [ ! -z ${RPC_SERVER:+x} ]; then
     RPC_PASSWORD=${RPC_PASSWORD:-$(dd if=/dev/urandom bs=20 count=1 2>/dev/null | base64)}
 
     echo "server=1" >> "/litecoin/litecoin.conf"
+    echo "rpcbind=0.0.0.0" >> "/litecoin/litecoin.conf"
+    echo "rpcallowip=0.0.0.0/24" >> "/litecoin/litecoin.conf"
     echo "rpcuser=${RPC_USER}" >> "/litecoin/litecoin.conf"
     echo "rpcpassword=${RPC_PASSWORD}" >> "/litecoin/litecoin.conf"
 fi;
